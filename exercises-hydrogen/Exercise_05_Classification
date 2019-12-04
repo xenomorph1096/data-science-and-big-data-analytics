@@ -11,6 +11,7 @@
 #
 # We use data about dominant types of trees in forests in this exercise. The data is available as part of ```sklearn``` (requires version 0.20) for [Python](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_covtype.html#sklearn.datasets.fetch_covtype).
 # %% codecell
+%matplotlib inline
 from sklearn.datasets import fetch_covtype
 # %% codecell
 dataset = fetch_covtype()
@@ -56,7 +57,7 @@ sns.countplot(df["target"])
 # Before you can start building classifiers, you need to separate the data into training and test data. Because the data is quite large, please use 5% of the data for training, and 95% of the data for testing. Because you are selecting such a small subset, it could easily happen that not all classes are represented the same way in the training and in the test data. Use _stratified sampling_ to avoid this.
 # %% codecell
 from sklearn.model_selection import train_test_split
-# ohttps://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+# https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 dataset_train, dataset_test, target_train, target_test = train_test_split(dataset.data, dataset.target, test_size=0.95, stratify=dataset.target)
 df_train = pd.DataFrame(dataset_train)
 # df_train['target'] = target_train
@@ -88,9 +89,10 @@ df_train_norm=ss.fit_transform(df_train)
 print(df_train_norm.mean(), df_train_norm.std())
 df_test_norm=ss.transform(df_test)
 from sklearn.neighbors import KNeighborsClassifier
-knn_classifier = KNeighborsClassifier(3)
+knn_classifier = KNeighborsClassifier(2)
 knn_classifier.fit(df_train, target_train)
 pred_knn = knn_classifier.predict(df_test)
+# knn_classifier.fit(df_train_norm, target_train)
 # pred_knn = knn_classifier.predict(df_test_norm)
 from sklearn.metrics import matthews_corrcoef, recall_score, precision_score, f1_score
 
@@ -107,7 +109,7 @@ knn_precision_s = []
 knn_f1_s = []
 knn_classifier_s = []
 
-for i in range(1, 10):
+for i in range(1, 4):
     knn_classifier = KNeighborsClassifier(i)
     print("Training for k = "+str(i))
     knn_classifier.fit(df_train, target_train)
@@ -128,11 +130,14 @@ for i in range(1, 10):
 
     knn_k.append(i)
 
+
+
+
 plt.plot(knn_k, knn_mcc_s)
 plt.plot(knn_k, knn_recall_s)
 plt.plot(knn_k, knn_precision_s)
 plt.plot(knn_k, knn_f1_s)
-
+plt.show()
 
 
 # %% codecell
