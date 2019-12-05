@@ -88,20 +88,35 @@ ss = StandardScaler()
 df_train_norm=ss.fit_transform(df_train)
 print(df_train_norm.mean(), df_train_norm.std())
 df_test_norm=ss.transform(df_test)
+## %% codecell
+
+print(df_test_norm)
+
+## %% codecell
 from sklearn.neighbors import KNeighborsClassifier
-knn_classifier = KNeighborsClassifier(2)
+knn_classifier = KNeighborsClassifier(3)
 knn_classifier.fit(df_train, target_train)
 pred_knn = knn_classifier.predict(df_test)
-# knn_classifier.fit(df_train_norm, target_train)
-# pred_knn = knn_classifier.predict(df_test_norm)
-from sklearn.metrics import matthews_corrcoef, recall_score, precision_score, f1_score
 
+print(precision_recall_fscore_support(target_test, pred_knn, average='micro'))
+
+knn_classifier_norm = KNeighborsClassifier(3)
+knn_classifier_norm.fit(df_train_norm, target_train)
+pred_knn_norm = knn_classifier.predict(df_test_norm)
+
+#
+# knn_classifier_norm.fit(df_train_norm, target_train)
+# pred_knn_norm = knn_classifier.predict(df_test_norm)
+
+from sklearn.metrics import matthews_corrcoef, recall_score, precision_score, f1_score, classification_report, precision_recall_fscore_support
+print(precision_recall_fscore_support(target_test, pred_knn_norm, average='micro'))
 knn_mcc = matthews_corrcoef(target_test, pred_knn)
 knn_recall = recall_score(target_test, pred_knn, average='micro')
 knn_precision = precision_score(target_test, pred_knn, average='micro')
 knn_f1 = f1_score(target_test, pred_knn, average='micro')
-
+knn_classification_report = classification_report(target_test, pred_knn)
 print(knn_mcc, knn_recall, knn_precision, knn_f1)
+print(knn_classification_report)
 knn_k = []
 knn_mcc_s = []
 knn_recall_s = []
@@ -109,7 +124,7 @@ knn_precision_s = []
 knn_f1_s = []
 knn_classifier_s = []
 
-for i in range(1, 4):
+for i in range(4, 11):
     knn_classifier = KNeighborsClassifier(i)
     print("Training for k = "+str(i))
     knn_classifier.fit(df_train, target_train)
@@ -132,14 +147,22 @@ for i in range(1, 4):
 
 
 
-
 plt.plot(knn_k, knn_mcc_s)
 plt.plot(knn_k, knn_recall_s)
 plt.plot(knn_k, knn_precision_s)
 plt.plot(knn_k, knn_f1_s)
-plt.show()
 
+# %%markdown
+Decision Trees
 
+# %% codecell
+from sklearn import tree
+dtree_CART = tree.DecisionTreeClassifier()
+
+dtree_CART_tree = dtree_CART.fit(df_train, target_train)
+tree.plot_tree(dtree_CART_tree)
+
+print(sklearn.__version__)
 # %% codecell
 
 # %% markdown
