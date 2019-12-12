@@ -1,0 +1,77 @@
+* Text Mining
+  :PROPERTIES:
+  :CUSTOM_ID: text-mining
+  :END:
+
+This exercise sheet covers the following concepts.
+
+- Pre-processing of textual data
+- Word Clouds
+- TF-IDF
+
+** Data and Libraries
+   :PROPERTIES:
+   :CUSTOM_ID: data-and-libraries
+   :END:
+
+Your task in this exercise is to analyze textual data. You will perform
+various processing steps and see how the results of a simple
+visualization through word clouds evolve. You can find everything you
+need in the =nltk= and =wordcloud= libraries (+ some basic stuff, e.g.,
+for regular expressions).
+
+For this exercise set, we provide data about the tweets from Donald
+Trump in 2017. You can download the data
+[[https://user.informatik.uni-goettingen.de/~sherbold/trump-tweets-2017.txt][here]],
+each line contains a single tweet.
+
+
+#+BEGIN_SRC jupyter-python :session /jpy:localhost#8888:75a468b5-b953-4e88-b592-15e99c75984a :async yes
+import nltk
+import wordcloud
+from urllib.request import urlopen
+#+END_SRC
+
+#+RESULTS:
+
+
+** Word clouds without pre-processing
+   :PROPERTIES:
+   :CUSTOM_ID: word-clouds-without-pre-processing
+   :END:
+
+Load the data and create a word cloud without any further processing of
+the text data. Does this already work? What are problems?
+#+BEGIN_SRC jupyter-python :session /jpy:localhost#8888:75a468b5-b953-4e88-b592-15e99c75984a :async yes
+data = urlopen("https://user.informatik.uni-goettingen.de/~sherbold/trump-tweets-2017.txt").read() #bytes
+body = data.decode("utf-8")
+print(len(body))
+#+END_SRC
+#+RESULTS:
+: 306436
+
+** Pre-processing textual data
+   :PROPERTIES:
+   :CUSTOM_ID: pre-processing-textual-data
+   :END:
+
+Clean up the textual data, e.g., using the methods discussed in the
+lecture. Create a new word cloud based on the cleaned corpus.
+
+#+BEGIN_SRC python
+#+END_SRC
+
+** Use TF-IDF instead of TF
+   :PROPERTIES:
+   :CUSTOM_ID: use-tf-idf-instead-of-tf
+   :END:
+
+The word clouds are based on simple term frequencies (TF) by default.
+Calculate the tf-idf, i.e., the term frequency weighted with the inverse
+document frequency and create a new word cloud based on these
+frequencies. How does it change?
+
+#+BEGIN_SRC python
+#+END_SRC
+
+

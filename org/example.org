@@ -1,0 +1,16 @@
+* Hello
+* This is an org block
+** asd
+
+# You must use jupyter-org-interaction-mode otherwise source block evaluation does not work
+#+BEGIN_SRC jupyter-python  :session \jpy:localhost#8888: :async yes 
+  import matplotlib.pyplot as plt
+  plt.plot([1,2,3,4], [1,5,9,16])
+  np.array([1,2,3,4])
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+| <matplotlib.lines.Line2D | at | 0x7f0732f7cbb0> |
+[[file:./.ob-jupyter/0a13d9c4d8e041ca70236adb7e5be3c818cefe70.png]]
+:END:

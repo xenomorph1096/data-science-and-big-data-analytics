@@ -1,0 +1,21 @@
+[I 06:06:17.466 NotebookApp] Serving notebooks from local directory: /home/anant/Documents/Applied Computer Science/Angewandte Informatik Course Repos/data-science-and-big-data-analytics
+[I 06:06:17.466 NotebookApp] The Jupyter Notebook is running at:
+[I 06:06:17.466 NotebookApp] http://localhost:8888/?token=7126ba1e0ceec28b12c95c5b7a89faf4233006ba50b11f0c
+[I 06:06:17.466 NotebookApp]  or http://127.0.0.1:8888/?token=7126ba1e0ceec28b12c95c5b7a89faf4233006ba50b11f0c
+[I 06:06:17.466 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 06:06:17.470 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/anant/.local/share/jupyter/runtime/nbserver-16631-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=7126ba1e0ceec28b12c95c5b7a89faf4233006ba50b11f0c
+     or http://127.0.0.1:8888/?token=7126ba1e0ceec28b12c95c5b7a89faf4233006ba50b11f0c
+[I 06:06:40.296 NotebookApp] 302 GET / (::1) 0.48ms
+[W 06:06:52.902 NotebookApp] Notebook exercises/Exercise_08_Text_Mining.ipynb is not trusted
+[I 06:06:53.190 NotebookApp] Kernel started: 75a468b5-b953-4e88-b592-15e99c75984a
+[I 06:06:59.669 NotebookApp] 302 GET / (::1) 0.50ms
+[I 06:06:59.674 NotebookApp] 302 GET /login (::1) 0.54ms
+[I 06:06:59.675 NotebookApp] 302 GET / (::1) 0.30ms
+[I 06:07:02.899 NotebookApp] Uploading file to /tramp.SKnxbQ
+[W 06:07:02.912 NotebookApp] delete /tramp.SKnxbQ
+[I 06:08:53.204 NotebookApp] Saving file at /exercises/Exercise_08_Text_Mining.ipynb
